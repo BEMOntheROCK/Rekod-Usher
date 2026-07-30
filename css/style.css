@@ -89,7 +89,7 @@ input[type="number"] {
 button[type="submit"] {
   width: 100%;
   padding: 10px;
-  background: #2a6b3f;
+  background: #EAA221;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -176,7 +176,7 @@ button[type="submit"]:disabled {
   padding: 8px 14px;
   border: none;
   border-radius: 4px;
-  background: #2a6b3f;
+  background: #EAA221;
   color: #fff;
   cursor: pointer;
   height: fit-content;
@@ -226,7 +226,7 @@ button[type="submit"]:disabled {
 }
 
 #rekodTable .editBtn {
-  background: #2a6b3f;
+  background: #EAA221;
   color: #fff;
 }
 
@@ -277,7 +277,7 @@ button[type="submit"]:disabled {
 }
 
 .modal-actions button[type="submit"] {
-  background: #2a6b3f;
+  background: #EAA221;
   color: #fff;
 }
 
