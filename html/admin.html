@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Rekod Usher</title>
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Library untuk eksport PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+  <!-- Library untuk eksport XLSX -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <header class="church-header">
+    <h1 class="church-title">
+      <span class="church-bem">BEM</span>
+      <span class="church-ontherock">On The ROCK</span>
+    </h1>
+    <p class="page-subtitle">Admin - Rekod Usher</p>
+  </header>
+
+  <main class="admin-container">
+
+    <section class="filter-bar">
+      <div class="filter-group">
+        <label for="filterAcara">Acara</label>
+        <input type="text" id="filterAcara" placeholder="Cari acara...">
+      </div>
+
+      <div class="filter-group">
+        <label for="filterMula">Dari Tarikh</label>
+        <input type="date" id="filterMula">
+      </div>
+
+      <div class="filter-group">
+        <label for="filterHingga">Hingga Tarikh</label>
+        <input type="date" id="filterHingga">
+      </div>
+
+      <div class="filter-group">
+        <label for="sortOrder">Susun Tarikh</label>
+        <select id="sortOrder">
+          <option value="desc">Terbaru dahulu</option>
+          <option value="asc">Terlama dahulu</option>
+        </select>
+      </div>
+
+      <button id="applyFilterBtn">Tapis</button>
+      <button id="resetFilterBtn">Reset</button>
+    </section>
+
+    <section class="export-bar">
+      <button id="exportPdfBtn">Eksport PDF</button>
+      <button id="exportXlsxBtn">Eksport XLSX</button>
+    </section>
+
+    <section class="table-wrapper">
+      <table id="rekodTable">
+        <thead>
+          <tr>
+            <th>Tarikh</th>
+            <th>Acara</th>
+            <th>Sesi</th>
+            <th>Jumlah Usher</th>
+            <th>Jemaat</th>
+            <th>Rock Essence</th>
+            <th>Total</th>
+            <th>Tindakan</th>
+          </tr>
+        </thead>
+        <tbody id="rekodTableBody">
+          <!-- Rows dijana secara dinamik -->
+        </tbody>
+      </table>
+      <p id="adminStatusMessage" class="status-message"></p>
+    </section>
+
+  </main>
+
+  <!-- Modal Edit -->
+  <div id="editModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Edit Rekod</h2>
+      <form id="editForm">
+        <input type="hidden" id="editId">
+
+        <div class="form-group">
+          <label for="editTarikh">Tarikh</label>
+          <input type="date" id="editTarikh" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editAcara">Acara</label>
+          <input type="text" id="editAcara" required>
+        </div>
+
+        <div class="form-group">
+          <label>Sesi</label>
+          <div class="checkbox-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="editSesi1"> Sesi 1
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="editSesi2"> Sesi 2
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="editJumlahUsher">Jumlah Usher</label>
+          <input type="number" id="editJumlahUsher" min="0" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editJemaat">Jemaat</label>
+          <input type="number" id="editJemaat" min="0" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editRockEssence">Rock Essence</label>
+          <input type="number" id="editRockEssence" min="0" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editTotal">Total</label>
+          <input type="number" id="editTotal" readonly>
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit">Simpan</button>
+          <button type="button" id="cancelEditBtn">Batal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="../js/admin.js"></script>
+</body>
+</html>
