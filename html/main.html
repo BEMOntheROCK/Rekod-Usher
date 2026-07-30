@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekod Usher - BEM On The ROCK</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="church-header">
+    <h1 class="church-title">
+      <span class="church-bem">BEM</span>
+      <span class="church-ontherock">On The ROCK</span>
+    </h1>
+    <p class="page-subtitle">Rekod Usher</p>
+  </header>
+
+  <main class="form-container">
+    <form id="rekodForm">
+
+      <div class="form-group">
+        <label for="tarikh">Tarikh</label>
+        <input type="date" id="tarikh" name="tarikh" required>
+      </div>
+
+      <div class="form-group">
+        <label for="acara">Acara</label>
+        <input type="text" id="acara" name="acara" value="Ibadah Raya" required>
+      </div>
+
+      <div class="form-group">
+        <label>Sesi</label>
+        <div class="checkbox-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="sesi1" name="sesi1">
+            Sesi 1
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="sesi2" name="sesi2">
+            Sesi 2
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="jumlahUsher">Jumlah Usher</label>
+        <input type="number" id="jumlahUsher" name="jumlahUsher" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label for="jemaat">Jumlah Jemaat Hadir</label>
+        <input type="number" id="jemaat" name="jemaat" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label for="rockEssence">Rock Essence</label>
+        <input type="number" id="rockEssence" name="rockEssence" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label for="total">Jumlah Keseluruhan</label>
+        <input type="number" id="total" name="total" readonly>
+      </div>
+
+      <button type="submit" id="submitBtn">Hantar</button>
+
+      <p id="statusMessage" class="status-message"></p>
+
+    </form>
+  </main>
+
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>

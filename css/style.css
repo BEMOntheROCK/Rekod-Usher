@@ -1,0 +1,120 @@
+/* style.css - Rekod Usher (BEM On The ROCK) */
+/* Ini adalah styling asas sementara. Kita akan perhalusi aesthetics kemudian. */
+
+@font-face {
+  font-family: "Britannic Bold";
+  src: url("../assets/britannic-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Forte";
+  src: url("../assets/forte.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+
+.church-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.church-title {
+  margin: 0;
+}
+
+.church-bem {
+  font-family: "Britannic Bold", serif;
+  margin-right: 8px;
+}
+
+.church-ontherock {
+  font-family: "Forte", serif;
+}
+
+.page-subtitle {
+  margin: 4px 0 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.form-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 16px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: normal;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background: #2a6b3f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status-message {
+  text-align: center;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.status-message.success {
+  color: #2a6b3f;
+}
+
+.status-message.error {
+  color: #b02a2a;
+}
+
+.status-message.info {
+  color: #555;
+}
