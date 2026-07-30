@@ -119,6 +119,21 @@ button[type="submit"]:disabled {
   color: #555;
 }
 
+.admin-link-footer {
+  text-align: center;
+  padding: 20px;
+}
+
+.admin-link-footer a {
+  color: #888;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.admin-link-footer a:hover {
+  text-decoration: underline;
+}
+
 /* --- Admin Panel --- */
 
 .admin-container {
