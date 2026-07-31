@@ -1,6 +1,3 @@
-# Sembunyikan konfigurasi Firebase daripada repo awam
-js/firebase-config.js
-
 # Fail sistem
 .DS_Store
 Thumbs.db
