@@ -75,6 +75,7 @@ form.addEventListener("submit", async (e) => {
     const tarikhTimestamp = Timestamp.fromDate(new Date(year, month - 1, day));
 
     const dataRekod = {
+      diisiOleh: document.getElementById("diisiOleh").value.trim(),
       tarikh: tarikhTimestamp,
       acara: document.getElementById("acara").value.trim(),
       sesi: {

@@ -127,7 +127,7 @@ function paparJadual() {
 
   if (rekodDipapar.length === 0) {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td colspan="8" style="text-align:center;">Tiada rekod dijumpai.</td>`;
+    tr.innerHTML = `<td colspan="9" style="text-align:center;">Tiada rekod dijumpai.</td>`;
     tableBody.appendChild(tr);
     return;
   }
@@ -135,6 +135,7 @@ function paparJadual() {
   rekodDipapar.forEach(r => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
+      <td>${r.diisiOleh || ""}</td>
       <td>${formatTarikh(r.tarikh)}</td>
       <td>${r.acara || ""}</td>
       <td>${formatSesi(r.sesi)}</td>
@@ -165,6 +166,7 @@ function bukaEditModal(id) {
 
   document.getElementById("editId").value = rekod.id;
 
+  document.getElementById("editDiisiOleh").value = rekod.diisiOleh || "";
   const d = rekod.tarikh.toDate();
   const isoDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   document.getElementById("editTarikh").value = isoDate;
@@ -205,6 +207,7 @@ editForm.addEventListener("submit", async (e) => {
     const tarikhTimestamp = Timestamp.fromDate(new Date(year, month - 1, day));
 
     const dataKemaskini = {
+      diisiOleh: document.getElementById("editDiisiOleh").value.trim(),
       tarikh: tarikhTimestamp,
       acara: document.getElementById("editAcara").value.trim(),
       sesi: {
@@ -267,8 +270,9 @@ exportPdfBtn.addEventListener("click", () => {
   docPdf.setFontSize(11);
   docPdf.text("Rekod Usher", 14, 22);
 
-  const kolum = ["Tarikh", "Acara", "Sesi", "Jumlah Usher", "Jemaat", "Rock Essence", "Total"];
+  const kolum = ["Diisi Oleh", "Tarikh", "Acara", "Sesi", "Jumlah Usher", "Jemaat", "Rock Essence", "Total"];
   const baris = rekodDipapar.map(r => [
+    r.diisiOleh || "",
     formatTarikh(r.tarikh),
     r.acara || "",
     formatSesi(r.sesi),
@@ -295,6 +299,7 @@ exportXlsxBtn.addEventListener("click", () => {
   }
 
   const data = rekodDipapar.map(r => ({
+    "Diisi Oleh": r.diisiOleh || "",
     Tarikh: formatTarikh(r.tarikh),
     Acara: r.acara || "",
     Sesi: formatSesi(r.sesi),
