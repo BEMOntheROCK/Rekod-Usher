@@ -145,7 +145,7 @@ function paparJadual() {
       <td>${r.total ?? ""}</td>
       <td>
         <button class="editBtn" data-id="${r.id}">Edit</button>
-        <button class="deleteBtn" data-id="${r.id}">Padam</button>
+        <button class="deleteBtn" data-id="${r.id}">Buang</button>
       </td>
     `;
     tableBody.appendChild(tr);

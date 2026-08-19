@@ -41,12 +41,25 @@ body {
 .church-ontherock {
   font-family: "Forte", serif;
   color: #fff;
+  letter-spacing: 2px;
 }
 
 .page-subtitle {
   margin: 4px 0 0;
   font-size: 1rem;
   color: #fff;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
 }
 
 .form-container {
@@ -95,6 +108,12 @@ input[type="number"] {
   color: #777;
 }
 
+.form-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
 button[type="submit"] {
   width: 100%;
   padding: 10px;
@@ -133,16 +152,19 @@ button[type="submit"]:disabled {
   display: flex;
   justify-content: center;
   gap: 12px;
-  padding: 20px;
+  padding: 0 20px 20px;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .footer-btn {
+  flex: 1;
   display: inline-block;
   padding: 10px 24px;
   border: none;
   border-radius: 6px;
-  background: #e0a020;
-  color: #fff;
+  background: #fff;
+  color: #222;
   font-size: 0.9rem;
   font-weight: bold;
   text-decoration: none;
@@ -151,7 +173,7 @@ button[type="submit"]:disabled {
 }
 
 .footer-btn:hover {
-  background: #c98d15;
+  background: #eee;
 }
 
 .qr-modal-content {
