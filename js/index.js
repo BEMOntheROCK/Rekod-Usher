@@ -18,6 +18,23 @@ const statusMessage = document.getElementById("statusMessage");
 const submitBtn = document.getElementById("submitBtn");
 const sesi1Input = document.getElementById("sesi1");
 const sesi2Input = document.getElementById("sesi2");
+const qrBtn = document.getElementById("qrBtn");
+const qrModal = document.getElementById("qrModal");
+const closeQrBtn = document.getElementById("closeQrBtn");
+
+qrBtn.addEventListener("click", () => {
+  qrModal.classList.remove("hidden");
+});
+
+closeQrBtn.addEventListener("click", () => {
+  qrModal.classList.add("hidden");
+});
+
+qrModal.addEventListener("click", (e) => {
+  if (e.target === qrModal) {
+    qrModal.classList.add("hidden");
+  }
+});
 
 // Benarkan usher batalkan pilihan sesi (klik sekali lagi untuk nyahtanda)
 let sesiSebelumIni = null;

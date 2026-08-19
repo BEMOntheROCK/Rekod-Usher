@@ -1,5 +1,5 @@
-// admin.js
-// Logik untuk panel Admin - Rekod Usher (admin.html)
+// record.js
+// Logik untuk panel Rekod - Rekod Usher (record.html)
 
 import {
   db,

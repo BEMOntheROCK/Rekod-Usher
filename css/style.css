@@ -129,19 +129,40 @@ button[type="submit"]:disabled {
   color: #555;
 }
 
-.admin-link-footer {
-  text-align: center;
+.footer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
   padding: 20px;
 }
 
-.admin-link-footer a {
-  color: #888;
-  font-size: 0.85rem;
+.footer-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  background: #e0a020;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
   text-decoration: none;
+  text-align: center;
+  cursor: pointer;
 }
 
-.admin-link-footer a:hover {
-  text-decoration: underline;
+.footer-btn:hover {
+  background: #c98d15;
+}
+
+.qr-modal-content {
+  text-align: center;
+}
+
+.qr-image {
+  max-width: 100%;
+  width: 280px;
+  height: auto;
+  margin-bottom: 16px;
 }
 
 /* --- Admin Panel --- */

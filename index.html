@@ -72,9 +72,17 @@
     </form>
   </main>
 
-  <footer class="admin-link-footer">
-    <a href="admin.html">Admin</a>
+  <footer class="footer-actions">
+    <a href="record.html" class="footer-btn">Rekod</a>
+    <button type="button" id="qrBtn" class="footer-btn">QR</button>
   </footer>
+
+  <div id="qrModal" class="modal hidden">
+    <div class="modal-content qr-modal-content">
+      <img src="assets/qr.png" alt="QR Kod" class="qr-image">
+      <button type="button" id="closeQrBtn">Tutup</button>
+    </div>
+  </div>
 
   <script type="module" src="js/index.js"></script>
 </body>
