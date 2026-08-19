@@ -35,16 +35,18 @@ body {
 .church-bem {
   font-family: "Britannic Bold", serif;
   margin-right: 8px;
+  color: #fff;
 }
 
 .church-ontherock {
   font-family: "Forte", serif;
+  color: #fff;
 }
 
 .page-subtitle {
   margin: 4px 0 0;
   font-size: 1rem;
-  color: #555;
+  color: #fff;
 }
 
 .form-container {
