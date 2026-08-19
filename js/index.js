@@ -16,6 +16,21 @@ const rockEssenceInput = document.getElementById("rockEssence");
 const totalInput = document.getElementById("total");
 const statusMessage = document.getElementById("statusMessage");
 const submitBtn = document.getElementById("submitBtn");
+const sesi1Input = document.getElementById("sesi1");
+const sesi2Input = document.getElementById("sesi2");
+
+// Benarkan usher batalkan pilihan sesi (klik sekali lagi untuk nyahtanda)
+let sesiSebelumIni = null;
+[sesi1Input, sesi2Input].forEach((input) => {
+  input.addEventListener("click", () => {
+    if (sesiSebelumIni === input.id) {
+      input.checked = false;
+      sesiSebelumIni = null;
+    } else {
+      sesiSebelumIni = input.id;
+    }
+  });
+});
 
 // Kira jumlah keseluruhan secara automatik
 function kiraTotal() {
@@ -48,7 +63,7 @@ form.addEventListener("submit", async (e) => {
       sesi: {
         sesi1: document.getElementById("sesi1").checked,
         sesi2: document.getElementById("sesi2").checked
-      },
+      }, // "Tiada" leaves both false since sesi is now a mutually exclusive radio choice
       jumlahUsher: parseInt(document.getElementById("jumlahUsher").value) || 0,
       jemaat: parseInt(jemaatInput.value) || 0,
       rockEssence: parseInt(rockEssenceInput.value) || 0,
@@ -62,6 +77,7 @@ form.addEventListener("submit", async (e) => {
     form.reset();
     document.getElementById("acara").value = "Ibadah Raya";
     totalInput.value = "";
+    sesiSebelumIni = null;
   } catch (err) {
     console.error("Ralat menghantar rekod:", err);
     papar("Ralat: Rekod gagal dihantar. Sila cuba lagi.", "error");

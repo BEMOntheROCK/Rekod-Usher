@@ -33,9 +33,24 @@ const cancelEditBtn = document.getElementById("cancelEditBtn");
 const editJemaatInput = document.getElementById("editJemaat");
 const editRockEssenceInput = document.getElementById("editRockEssence");
 const editTotalInput = document.getElementById("editTotal");
+const editSesi1Input = document.getElementById("editSesi1");
+const editSesi2Input = document.getElementById("editSesi2");
 
 let semuaRekod = []; // Cache semua rekod dari Firestore
 let rekodDipapar = []; // Rekod selepas ditapis/disusun (untuk eksport)
+
+// Benarkan admin batalkan pilihan sesi (klik sekali lagi untuk nyahtanda)
+let editSesiSebelumIni = null;
+[editSesi1Input, editSesi2Input].forEach((input) => {
+  input.addEventListener("click", () => {
+    if (editSesiSebelumIni === input.id) {
+      input.checked = false;
+      editSesiSebelumIni = null;
+    } else {
+      editSesiSebelumIni = input.id;
+    }
+  });
+});
 
 function papar(mesej, jenis) {
   adminStatusMessage.textContent = mesej;
@@ -155,8 +170,11 @@ function bukaEditModal(id) {
   document.getElementById("editTarikh").value = isoDate;
 
   document.getElementById("editAcara").value = rekod.acara || "";
-  document.getElementById("editSesi1").checked = !!(rekod.sesi && rekod.sesi.sesi1);
-  document.getElementById("editSesi2").checked = !!(rekod.sesi && rekod.sesi.sesi2);
+  const isSesi1 = !!(rekod.sesi && rekod.sesi.sesi1);
+  const isSesi2 = !!(rekod.sesi && rekod.sesi.sesi2);
+  editSesi1Input.checked = isSesi1;
+  editSesi2Input.checked = isSesi2;
+  editSesiSebelumIni = isSesi1 ? "editSesi1" : (isSesi2 ? "editSesi2" : null);
   document.getElementById("editJumlahUsher").value = rekod.jumlahUsher ?? 0;
   editJemaatInput.value = rekod.jemaat ?? 0;
   editRockEssenceInput.value = rekod.rockEssence ?? 0;
