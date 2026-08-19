@@ -69,12 +69,24 @@ body {
   background: #eee;
 }
 
-.form-container {
+.page-container {
   max-width: 480px;
   margin: 0 auto;
+  padding: 0 20px;
+}
+
+.form-container {
   padding: 20px;
   background: #fff;
   border-radius: 8px;
+}
+
+.diisi-oleh-card {
+  margin-bottom: 16px;
+}
+
+.diisi-oleh-card .form-group {
+  margin-bottom: 0;
 }
 
 .form-group {
