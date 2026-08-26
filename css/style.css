@@ -407,6 +407,14 @@ button[type="submit"]:disabled {
   margin-bottom: 18px;
 }
 
+.clash-highlight {
+  font-weight: bold;
+  color: #b02a2a;
+  background: #fdecea;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
 .clash-close-btn {
   padding: 10px 28px;
   border: none;

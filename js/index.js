@@ -116,7 +116,7 @@ form.addEventListener("submit", async (e) => {
       const namaPengisi = rekodSediaAda.diisiOleh || "seseorang";
       const tarikhTeks = `${String(day).padStart(2, "0")}/${String(month).padStart(2, "0")}/${year}`;
       const sesiTeks = formatSesiTeks(sesiValue);
-      clashMessage.textContent = `Rekod untuk acara: ${acaraValue} pada ${tarikhTeks}, ${sesiTeks} telah pun dihantar oleh ${namaPengisi}.`;
+      clashMessage.innerHTML = `Rekod untuk acara: <span class="clash-highlight">${acaraValue}</span> pada <span class="clash-highlight">${tarikhTeks}</span>, <span class="clash-highlight">${sesiTeks}</span> telah pun dihantar oleh ${namaPengisi}.`;
       clashModal.classList.remove("hidden");
       papar("", "");
       return;
