@@ -13,6 +13,7 @@ import {
   updateDoc,
   deleteDoc,
   query,
+  where,
   orderBy,
   Timestamp,
   serverTimestamp
@@ -42,6 +43,7 @@ export {
   updateDoc,
   deleteDoc,
   query,
+  where,
   orderBy,
   Timestamp,
   serverTimestamp,

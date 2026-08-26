@@ -5,6 +5,9 @@ import {
   db,
   collection,
   addDoc,
+  getDocs,
+  query,
+  where,
   Timestamp,
   serverTimestamp,
   REKOD_COLLECTION
@@ -21,6 +24,19 @@ const sesi2Input = document.getElementById("sesi2");
 const qrBtn = document.getElementById("qrBtn");
 const qrModal = document.getElementById("qrModal");
 const closeQrBtn = document.getElementById("closeQrBtn");
+const clashModal = document.getElementById("clashModal");
+const clashMessage = document.getElementById("clashMessage");
+const closeClashBtn = document.getElementById("closeClashBtn");
+
+closeClashBtn.addEventListener("click", () => {
+  clashModal.classList.add("hidden");
+});
+
+clashModal.addEventListener("click", (e) => {
+  if (e.target === clashModal) {
+    clashModal.classList.add("hidden");
+  }
+});
 
 qrBtn.addEventListener("click", () => {
   qrModal.classList.remove("hidden");
@@ -64,6 +80,12 @@ function papar(mesej, jenis) {
   statusMessage.className = "status-message " + jenis;
 }
 
+function formatSesiTeks(sesi) {
+  if (sesi && sesi.sesi1) return "Sesi 1";
+  if (sesi && sesi.sesi2) return "Sesi 2";
+  return "Tiada Sesi";
+}
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   submitBtn.disabled = true;
@@ -74,14 +96,37 @@ form.addEventListener("submit", async (e) => {
     const [year, month, day] = tarikhValue.split("-").map(Number);
     const tarikhTimestamp = Timestamp.fromDate(new Date(year, month - 1, day));
 
+    const acaraValue = document.getElementById("acara").value.trim();
+    const sesiValue = {
+      sesi1: document.getElementById("sesi1").checked,
+      sesi2: document.getElementById("sesi2").checked
+    }; // "Tiada" leaves both false since sesi is now a mutually exclusive radio choice
+
+    // Semak percanggahan: rekod sedia ada dengan tarikh, acara dan sesi yang sama
+    const clashQuery = query(
+      collection(db, REKOD_COLLECTION),
+      where("tarikh", "==", tarikhTimestamp),
+      where("acara", "==", acaraValue),
+      where("sesi", "==", sesiValue)
+    );
+    const clashSnapshot = await getDocs(clashQuery);
+
+    if (!clashSnapshot.empty) {
+      const rekodSediaAda = clashSnapshot.docs[0].data();
+      const namaPengisi = rekodSediaAda.diisiOleh || "seseorang";
+      const tarikhTeks = `${String(day).padStart(2, "0")}/${String(month).padStart(2, "0")}/${year}`;
+      const sesiTeks = formatSesiTeks(sesiValue);
+      clashMessage.textContent = `Rekod untuk acara: ${acaraValue} pada ${tarikhTeks}, ${sesiTeks} telah pun dihantar oleh ${namaPengisi}.`;
+      clashModal.classList.remove("hidden");
+      papar("", "");
+      return;
+    }
+
     const dataRekod = {
       diisiOleh: document.getElementById("diisiOleh").value.trim(),
       tarikh: tarikhTimestamp,
-      acara: document.getElementById("acara").value.trim(),
-      sesi: {
-        sesi1: document.getElementById("sesi1").checked,
-        sesi2: document.getElementById("sesi2").checked
-      }, // "Tiada" leaves both false since sesi is now a mutually exclusive radio choice
+      acara: acaraValue,
+      sesi: sesiValue,
       jumlahUsher: parseInt(document.getElementById("jumlahUsher").value) || 0,
       jemaat: parseInt(jemaatInput.value) || 0,
       rockEssence: parseInt(rockEssenceInput.value) || 0,
