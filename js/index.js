@@ -14,6 +14,7 @@ import {
 } from "./firebase-config.js";
 
 const form = document.getElementById("rekodForm");
+const jumlahUsherInput = document.getElementById("jumlahUsher");
 const jemaatInput = document.getElementById("jemaat");
 const rockEssenceInput = document.getElementById("rockEssence");
 const totalInput = document.getElementById("total");
@@ -67,11 +68,13 @@ let sesiSebelumIni = null;
 
 // Kira jumlah keseluruhan secara automatik
 function kiraTotal() {
+  const jumlahUsher = parseInt(jumlahUsherInput.value) || 0;
   const jemaat = parseInt(jemaatInput.value) || 0;
   const rockEssence = parseInt(rockEssenceInput.value) || 0;
-  totalInput.value = jemaat + rockEssence;
+  totalInput.value = jumlahUsher + jemaat + rockEssence;
 }
 
+jumlahUsherInput.addEventListener("input", kiraTotal);
 jemaatInput.addEventListener("input", kiraTotal);
 rockEssenceInput.addEventListener("input", kiraTotal);
 
