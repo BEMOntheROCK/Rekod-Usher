@@ -197,6 +197,14 @@ button[type="submit"]:disabled {
 
 .qr-modal-content {
   text-align: center;
+  border-top: 5px solid #EAA221;
+}
+
+.qr-title {
+  margin: 0 0 16px;
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .qr-image {
@@ -204,6 +212,23 @@ button[type="submit"]:disabled {
   width: 280px;
   height: auto;
   margin-bottom: 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.qr-close-btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 6px;
+  background: #EAA221;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.qr-close-btn:hover {
+  background: #d19419;
 }
 
 /* --- Admin Panel --- */
