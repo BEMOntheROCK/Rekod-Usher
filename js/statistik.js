@@ -105,6 +105,22 @@ function lukisGraf() {
     statistikChart.destroy();
   }
 
+  // Kira julat paksi-y yang ketat supaya perubahan data kelihatan jelas
+  // (terutamanya pada skrin mudah alih yang lebih pendek), bukannya
+  // bermula dari 0 setiap kali.
+  const semuaNilai = [...dataSesi1, ...dataSesi2].filter(
+    v => v !== null && v !== undefined
+  );
+  let yMin = 0;
+  let yMax = undefined;
+  if (semuaNilai.length > 0) {
+    const nilaiMin = Math.min(...semuaNilai);
+    const nilaiMax = Math.max(...semuaNilai);
+    const jidar = Math.max((nilaiMax - nilaiMin) * 0.1, 1);
+    yMin = Math.max(0, Math.floor(nilaiMin - jidar));
+    yMax = Math.ceil(nilaiMax + jidar);
+  }
+
   statistikChart = new Chart(chartCanvas, {
     type: "line",
     data: {
@@ -130,6 +146,7 @@ function lukisGraf() {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,
@@ -142,7 +159,8 @@ function lukisGraf() {
         },
         y: {
           title: { display: true, text: labelJenis },
-          beginAtZero: true
+          min: yMin,
+          max: yMax
         }
       }
     }

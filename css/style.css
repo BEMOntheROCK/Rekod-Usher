@@ -351,6 +351,12 @@ button[type="submit"]:disabled {
   color: #fff;
 }
 
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
 #statistikChart {
   max-width: 100%;
 }
